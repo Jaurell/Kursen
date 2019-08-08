@@ -1,0 +1,100 @@
+Model specification:
+autonomy   =~ a1 + a3 + a6
+competence =~ c1 + c3 + c6
+
+lavaan 0.6-2 ended normally after 26 iterations
+
+  Optimization method                           NLMINB
+  Number of free parameters                         19
+
+  Number of observations                           585
+  Number of missing patterns                         1
+
+  Estimator                                         ML
+  Model Fit Test Statistic                      13.617
+  Degrees of freedom                                 8
+  P-value (Chi-square)                           0.092
+
+Parameter Estimates:
+
+  Information                                 Observed
+  Observed information based on                Hessian
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  autonomy =~                                                           
+    a1                1.000                               0.698    0.754
+    a3                1.121    0.067   16.774    0.000    0.782    0.760
+    a6                1.225    0.074   16.533    0.000    0.855    0.819
+  competence =~                                                         
+    c1                1.000                               0.940    0.787
+    c3                0.773    0.070   11.090    0.000    0.726    0.590
+    c6                0.805    0.070   11.431    0.000    0.756    0.658
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  autonomy ~~                                                           
+    competence        0.317    0.040    7.895    0.000    0.483    0.483
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .a1                4.015    0.038  104.960    0.000    4.015    4.340
+   .a3                3.915    0.043   91.989    0.000    3.915    3.803
+   .a6                3.728    0.043   86.361    0.000    3.728    3.571
+   .c1                3.624    0.049   73.442    0.000    3.624    3.036
+   .c3                3.521    0.051   69.208    0.000    3.521    2.861
+   .c6                3.728    0.048   78.405    0.000    3.728    3.242
+    autonomy          0.000                               0.000    0.000
+    competence        0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .a1                0.369    0.031   11.928    0.000    0.369    0.431
+   .a3                0.447    0.038   11.773    0.000    0.447    0.422
+   .a6                0.359    0.039    9.148    0.000    0.359    0.329
+   .c1                0.541    0.072    7.559    0.000    0.541    0.380
+   .c3                0.987    0.071   13.925    0.000    0.987    0.652
+   .c6                0.751    0.062   12.099    0.000    0.751    0.567
+    autonomy          0.487    0.050    9.686    0.000    1.000    1.000
+    competence        0.883    0.100    8.804    0.000    1.000    1.000
+
+
+Fit Measures:
+
+   chisq       df    rmsea      cfi      tli     srmr      aic      bic 
+  13.617    8.000    0.035    0.995    0.990    0.020 9541.659 9624.720 
+
+Reliability:
+
+        autonomy competence     total
+alpha  0.8208511  0.7161326 0.7666130
+omega  0.8227703  0.7202549 0.8293387
+omega2 0.8227703  0.7202549 0.8293387
+omega3 0.8217148  0.7195246 0.8341494
+avevar 0.6090644  0.4652256 0.5247170
+
+Modification Indices:
+
+          lhs op rhs    mi    epc sepc.lv sepc.all sepc.nox
+29 competence =~  a6 9.501  0.161   0.151    0.145    0.145
+30         a1 ~~  a3 9.501  0.153   0.153    0.377    0.377
+39         a6 ~~  c1 6.647  0.078   0.078    0.177    0.177
+28 competence =~  a3 4.378 -0.106  -0.100   -0.097   -0.097
+31         a1 ~~  a6 4.378 -0.121  -0.121   -0.333   -0.333
+36         a3 ~~  c1 3.804 -0.060  -0.060   -0.121   -0.121
+27 competence =~  a1 1.460 -0.055  -0.052   -0.056   -0.056
+35         a3 ~~  a6 1.460 -0.079  -0.079   -0.198   -0.198
+25   autonomy =~  c3 0.796 -0.082  -0.057   -0.047   -0.047
+43         c1 ~~  c6 0.796 -0.089  -0.089   -0.140   -0.140
+37         a3 ~~  c3 0.769 -0.030  -0.030   -0.045   -0.045
+38         a3 ~~  c6 0.766  0.027   0.027    0.046    0.046
+32         a1 ~~  c1 0.553 -0.021  -0.021   -0.046   -0.046
+33         a1 ~~  c3 0.541 -0.022  -0.022   -0.037   -0.037
+40         a6 ~~  c3 0.535  0.024   0.024    0.041    0.041
+26   autonomy =~  c6 0.334  0.051   0.036    0.031    0.031
+42         c1 ~~  c3 0.334  0.051   0.051    0.070    0.070
+41         a6 ~~  c6 0.308 -0.017  -0.017   -0.032   -0.032
+44         c3 ~~  c6 0.054  0.016   0.016    0.018    0.018
+24   autonomy =~  c1 0.054  0.024   0.017    0.014    0.014
+34         a1 ~~  c6 0.050  0.006   0.006    0.012    0.012

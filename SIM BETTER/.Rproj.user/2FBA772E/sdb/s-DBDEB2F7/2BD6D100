@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "path_to_data <- \"extent.csv\"\nnvars <- 25\nnobs <- 585\n\norg_data <- read.csv(file = path_to_data)\nmissing_values <- -99\norg_data[org_data == -99] <- NA\nnames(org_data) <- c(paste0(\"nsfs\",seq(1,18)), paste0(\"scas\",seq(1,6)), \"swls\")\n\ncovmat <- cor(org_data, use = \"pairwise.complete.obs\")\nL <- chol(covmat)\nr <- t(L) %*% matrix(rnorm(nvars*nobs), nrow=nvars, ncol=nobs)\nr <- t(r)\n\nrdata = as.data.frame(r)\n\nnsfs_cutvals <- c()\nstart <- 1\nend <- 18\ndata <- org_data\ndef_cut_vals <- function(data, start, end){\n  cut_vals <- c()\n  for (v in start:end){\n    freq <- cumsum(table(data[v])/sum(table(data[v])))\n    cumfreq <- freq[-length(freq)]\n    cut_vals <- c(cut_vals,cumfreq)\n  }\n  cut_vals <- as.data.frame(matrix(cut_vals, ncol = end - start + 1))\n  names(cut_vals) <- names(data[start:end])\n  return(cut_vals)\n}\n\n\nnsfs_cutvals <- def_cut_vals(org_data,1,18)\nscas_cutvals <- def_cut_vals(org_data,19,24)\nswls_cutvals <- def_cut_vals(org_data,25,25)\n  \nrdata\nnsfs <- make_int_data(rdata[1:18], nsfs_cutvals)\nscas <- make_int_data(rdata[19:24], scas_cutvals)\nswls <- make_int_data(rdata[25], swls_cutvals)\n\nnew_data <- cbind(nsfs,scas,swls)\n\nutils::View(new_data)\n\nwrite.csv(new_data, 'nsfs_simulated')\n\n",
+    "created" : 1537012598499.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "361300380",
+    "id" : "2BD6D100",
+    "lastKnownWriteTime" : 1536945130,
+    "last_content_update" : 1536945130,
+    "path" : "C:/Users/Jon/Dropbox/Simulation_better/nsfs_sim.R",
+    "project_path" : "nsfs_sim.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

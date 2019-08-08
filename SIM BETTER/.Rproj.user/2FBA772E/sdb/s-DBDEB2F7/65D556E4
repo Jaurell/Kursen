@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "require(mirt)\nrdata <- read.csv(\"nsfs/nsfs_simulated\")[-1]\nreversed_items <- c(2,4,5,8,10,11,13,15,18)\nrdata[reversed_items] <- 6-rdata[reversed_items]\n\nrdataA <- rdata[1:6]\nrdataS <- rdata[7:12]\nrdataC <- rdata[13:18]\nrdataSWLS <- rdata[25]\n#rdataAfix <- \ntest <- rdata[rdata[29] < 2 & rdata[29] > -2,]\nmodtest <- mirt(data = test[1:6], model = 1, itemtype = \"grsm\")\nsummary(modtest)\ncoef(modtest)\ncor(fscores(modtest), test[\"swls\"])\n\nmoda <- mirt(data = rdataA, model = 1, itemtype = \"grsm\")\nmods <- mirt(data = rdataS, model = 1, itemtype = \"gpcm\")\nmodc <- mirt(data = rdataC, model = 1, itemtype = \"gpcm\")\n\nsummary(moda)\nsummary(mods)\nsummary(modc)\n\n\ncoef(moda)\ncoef(mods, IRTpars = T)\ncoef(modc, IRTpars = T)\n\nitemfit(moda)\n\nplot(moda, type = \"trace\")\nplot(mods, type = \"trace\")\nplot(modc, type = \"trace\")\nfor (item in 1:6){\n  plot(itemplot(moda, item, type = \"info\"))\n  plot(itemplot(moda, item, type = \"score\"))\n}\nplot(moda, type = \"info\")\nplot(mods, type = \"info\")\nplot(modc, type = \"info\")\n\nplot(moda, type = \"score\")\n\nrdata['Asum'] <- rowSums(rdata[1:6])\nrdata['Ssum'] <- rowSums(rdata[7:12])\nrdata['Csum'] <- rowSums(rdata[13:18])\n\n\nrdata[\"a_fscore\"] <- fscores(moda)\n\ncumsum(table(rdata[\"Asum\"])/sum(table(rdata[\"Asum\"])))\n\ncor(fscores(moda), rdata[\"swls\"])\ncor(rdata[\"Asum\"][rdata[\"Asum\"] > 6], rdata[\"Ssum\"][rdata[\"Asum\"] > 6])\ncor(rdata[\"Asum\"], rdata[\"swls\"])\n\nrdata[\"persfit\"] <- personfit(moda)\n\n\nallfit <- mirt(rdata[1:18], 3, itemtype = \"gpcm\", model = \n\"a = 1-6\ns  = 7-12\nc  = 13-18\na~s\na~c\nc~s\")\nsummary(allfit)\ncoef(allfit, IRTpars = T)\n",
+    "created" : 1537012726875.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2988486409",
+    "id" : "65D556E4",
+    "lastKnownWriteTime" : 1537013637,
+    "last_content_update" : 1537019615655,
+    "path" : "C:/Users/Jon/Dropbox/Simulation_better/irt_example.R",
+    "project_path" : "irt_example.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
